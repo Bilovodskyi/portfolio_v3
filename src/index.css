@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(15 23 42);
+}
+
+h1::selection,
+h2::selection,
+th::selection,
+td::selection,
+li::selection,
+p::selection,
+a::selection {
+    background: rgb(94, 234, 212);
+}
+
+.hover-effect::before {
+    background: radial-gradient(
+        1000px circle at var(--mouse-x) var(--mouse-y),
+        rgba(59, 130, 246, 0.1),
+        transparent 40%
+    );
+    border-radius: inherit;
+    content: "";
+    height: var(--page-height);
+    opacity: 0;
+    transition: opacity 500ms;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.hover-effect:hover::before {
+    opacity: 1;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.navigation.active {
+    color: rgb(226 232 240);
+}
+
+.navigation:hover {
+    color: rgb(226 232 240);
+}
+
+.navigation::before {
+    content: "";
+    display: block;
+    left: 0px;
+    top: 50%;
+    height: 1px;
+    width: 35px;
+    margin-right: 5px;
+    background-color: rgb(148 163 184);
+    transition: all ease 300ms;
+}
+
+.navigation:hover:before {
+    content: "";
+    display: block;
+    left: 0px;
+    top: 50%;
+    height: 1px;
+    width: 60px;
+    margin-right: 5px;
+    background-color: rgb(226 232 240);
+    transition: all ease 300ms;
+}
+
+.active::before {
+    content: "";
+    display: block;
+    left: 0px;
+    top: 50%;
+    height: 1px;
+    width: 60px;
+    margin-right: 5px;
+    background-color: rgb(226 232 240);
+    transition: all ease 300ms;
+}
+
+td,
+th {
+    padding: 20px 10px;
+}
+
+tr {
+    border-bottom: 0.5px solid rgba(226, 232, 240, 0.1);
+}
+
+.tech {
+    @apply flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300;
+}
+
+.effect-on-hover {
+    @apply absolute -inset-x-4 -inset-y-4 hidden rounded-md transition lg:block lg:-inset-x-6 lg:group-hover:bg-slate-800/50 z-0 lg:group-hover:drop-shadow-lg;
+}
+
+.list-item {
+    @apply relative md:flex gap-3 lg:hover:!opacity-100 lg:group-hover/list:opacity-50;
+}
+
+.project-img {
+    @apply h-[120px] md:h-[80px] border-2 border-slate-200/10 transition group-hover:border-slate-200/30 rounded;
+}
+
+.video-website-link {
+    @apply group-hover/link:border-b-[1px] group-hover/link:border-teal-300 mb-[1px] group-hover/link:mb-0;
+}
+
+.section-class {
+    @apply p-8 max-[768px]:pt-6 md:p-32 pb-0 md:mx-6 flex flex-col gap-6;
+}
